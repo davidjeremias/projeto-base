@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { JwksValidationHandler } from 'angular-oauth2-oidc';
-import { authConfig } from './auth/auth.config';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -12,21 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private oauthService: OAuthService, private router: Router) {
-    this.configureWithNewConfigApi();
-  }
-
-  private configureWithNewConfigApi() {
-    this.oauthService.configure(authConfig);
-    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin().then(_ => {
-      if (!this.oauthService.hasValidIdToken() || !this.oauthService.hasValidAccessToken()) {
-        this.oauthService.initImplicitFlow();
-      } else {
-        this.router.navigate(['/']);
-      }
-    });
-
+  constructor(private router: Router) {
   }
 
 }

@@ -7,8 +7,6 @@ import { VERSION } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  title = 'Modelo Sso';
   version = '1.0.0.0';
   ng_version = VERSION.full;
 

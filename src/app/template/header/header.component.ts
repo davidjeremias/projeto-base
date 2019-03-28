@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-header',
@@ -8,33 +7,17 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class HeaderComponent implements OnInit {
 
-  title = 'Modelo Sso';
+  title = 'Projeto Mirante';
 
-  constructor(private oauthService: OAuthService) {
+  constructor() {
   }
 
-  public login() {
-      this.oauthService.initImplicitFlow();
+  public get userName(): string {
+      return "David Jeremias";
   }
 
-  public logoff() {
-      this.oauthService.logOut();
-  }
-
-  public get userName() {
-      const claims: any = this.oauthService.getIdentityClaims();
-      if (!claims) {
-        return null;
-      }
-      return claims.name;
-  }
-
-  public get userMatricula() {
-      const claims: any = this.oauthService.getIdentityClaims();
-      if (!claims) {
-        return null;
-      }
-      return claims.preferred_username;
+  public get userMatricula(): string {
+      return "016.965.871-66";
   }
 
   ngOnInit() {

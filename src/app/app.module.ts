@@ -1,4 +1,3 @@
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,12 +22,6 @@ import { MessagesComponent } from './messages/messages.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    OAuthModule.forRoot({
-      resourceServer: {
-          allowedUrls: ['http://localhost:8080/modelo-sso-api/api'],
-          sendAccessToken: true
-      }
-    }),
     AppRoutingModule
   ],
   providers: [HttpClientModule],
