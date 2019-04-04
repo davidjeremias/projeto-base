@@ -1,0 +1,115 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <h3 class="titulo">Cadastro de Clientes</h3>
+  </div>
+</div>
+
+<p-tabView class="ui-g-12">
+  <p-tabPanel header="Dados do Cliente" leftIcon="pi pi-user">
+    <br>
+    <br>
+    <form [formGroup]="formulario" autocomplete="off">
+      <div>
+          <div style="width:450px;margin-bottom:3px">
+              <div class="ui-g" style="width:400px;">
+                  <div class="ui-g-6">
+                      <span class="ui-float-label">
+                        <input id="float-input" type="text" size="20" style="height: 40px;" [(ngModel)]="cliente.cpf" formControlName="cpf"
+                          pKeyFilter="int" pInputText required>
+                        <label for="float-input">CPF</label>
+                      </span>
+                  </div>
+            
+                    <div class="ui-g-6">
+                      <span class="ui-float-label">
+                        <input id="float-input" type="text" size="45" style="height: 40px;" [(ngModel)]="cliente.nome" formControlName="nome"
+                          pInputText required maxlength="100" minlength="3"> 
+                        <label for="float-input">Nome</label>
+                      </span>
+                    </div>
+              </div>
+        </div>
+      </div>
+    </form>
+    <br>
+    <br>
+  </p-tabPanel>
+  <p-tabPanel header="Endereço" leftIcon="pi pi-map-marker">
+    <br>
+    <br>
+      <form [formGroup]="formulario" autocomplete="off">
+          <div>
+              <div style="width:450px;margin-bottom:3px">
+                  <div class="ui-g" style="width:400px;">
+                      <div class="ui-g-6">
+                          <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" style="height: 40px;" (focusout)="buscaEndereco()" [(ngModel)]="endereco.cep" formControlName="cep"
+                              pInputText required>
+                            <label for="float-input">CEP</label>
+                          </span>
+                      </div>
+                
+                        <div class="ui-g-6">
+                          <span class="ui-float-label">
+                            <input id="float-input" type="text" size="45" style="height: 40px;" [(ngModel)]="endereco.logradouro" formControlName="logradouro"
+                              pInputText required>
+                            <label for="float-input">Logradouro</label>
+                          </span>
+                        </div>
+                  </div>
+        
+                  <div class="ui-g" style="width:134%;">
+                      <div class="ui-g-4">
+                          <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" style="height: 40px;" [(ngModel)]="endereco.bairro" formControlName="bairro"
+                              pInputText required>
+                            <label for="float-input">Bairro</label>
+                          </span>
+                      </div>
+                      
+                        <div class="ui-g-4">
+                          <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" style="height: 40px;" [(ngModel)]="endereco.cidade" formControlName="cidade"
+                              pInputText required>
+                            <label for="float-input">Cidade</label>
+                          </span>
+                        </div>
+        
+                        <div class="ui-g-4">
+                            <span class="ui-float-label">
+                              <input id="float-input" type="text" size="16" style="height: 40px;" [(ngModel)]="endereco.uf" formControlName="uf"
+                                pInputText required>
+                              <label for="float-input">UF</label>
+                            </span>
+                        </div>
+                  </div>
+        
+                  <div class="ui-g" style="width:400px;">
+                      <div class="ui-g-6">
+                          <span class="ui-float-label">
+                            <input id="float-input" type="email" size="49" style="height: 40px;" [(ngModel)]="endereco.complemento" formControlName="complemento"
+                              pInputText required>
+                            <label for="float-input">Complemento</label>
+                          </span>
+                      </div>
+                  </div>
+            </div>
+          </div>
+        </form>
+        <br>
+        <br>
+  </p-tabPanel>
+  <p-tabPanel header="Telefone" leftIcon="pi pi-info" >
+      After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+  </p-tabPanel>
+  <p-tabPanel header="Email" leftIcon="pi pi-envelope" >
+      After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+  </p-tabPanel>
+</p-tabView>
+
+<div class="ui-g-12">
+  <button class="btn btn-padrao" type="button" [disabled]="!formulario.valid">ADICIONAR</button>
+  <button class="btn btn-padrao" type="button" (click)="clean()">LIMPAR</button>
+</div>
+
+
