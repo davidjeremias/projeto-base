@@ -1,4 +1,6 @@
+import { Globals } from './models/globals';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import  {  FormsModule  }  from  '@angular/forms';
@@ -16,6 +18,8 @@ import { ConsultaClienteComponent } from './cliente/consulta-cliente/consulta-cl
 import {TabViewModule} from 'primeng/tabview';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import { NgxViacepModule } from '@brunoc/ngx-viacep';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 
@@ -31,15 +35,18 @@ import {ButtonModule} from 'primeng/button';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     TabViewModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    NgxViacepModule,
+    DropdownModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

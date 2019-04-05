@@ -3,3 +3,17 @@
     color: #fff;
     margin-right: 3em
 }
+
+.table-telefone{
+    margin-top: 5em;
+    margin-bottom: 5em !important;
+}
+
+.botoes{
+    padding: 0;
+    margin-left: 15% !important;
+}
+
+.coluna{
+    text-align: center;
+}

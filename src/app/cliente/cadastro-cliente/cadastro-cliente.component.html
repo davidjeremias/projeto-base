@@ -39,8 +39,8 @@
     <br>
       <form [formGroup]="formulario" autocomplete="off">
           <div>
-              <div style="width:450px;margin-bottom:3px">
-                  <div class="ui-g" style="width:400px;">
+              <div style="width:450px;">
+                  <div class="ui-g" style="width:400px; margin-bottom: 7px">
                       <div class="ui-g-6">
                           <span class="ui-float-label">
                             <input id="float-input" type="text" size="20" style="height: 40px;" (focusout)="buscaEndereco()" [(ngModel)]="endereco.cep" formControlName="cep"
@@ -58,7 +58,7 @@
                         </div>
                   </div>
         
-                  <div class="ui-g" style="width:134%;">
+                  <div class="ui-g" style="width:134%; margin-bottom: 7px">
                       <div class="ui-g-4">
                           <span class="ui-float-label">
                             <input id="float-input" type="text" size="20" style="height: 40px;" [(ngModel)]="endereco.bairro" formControlName="bairro"
@@ -84,7 +84,7 @@
                         </div>
                   </div>
         
-                  <div class="ui-g" style="width:400px;">
+                  <div class="ui-g" style="width:400px;margin-bottom: 7px">
                       <div class="ui-g-6">
                           <span class="ui-float-label">
                             <input id="float-input" type="email" size="49" style="height: 40px;" [(ngModel)]="endereco.complemento" formControlName="complemento"
@@ -100,7 +100,64 @@
         <br>
   </p-tabPanel>
   <p-tabPanel header="Telefone" leftIcon="pi pi-info" >
-      After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+    <br>
+    <br>
+      <form [formGroup]="formulario" autocomplete="off">
+          <div>
+              <div style="width:450px;">
+                  <div class="ui-g" style="width:400px; margin-bottom: 7px">
+                      <div class="ui-g-6">
+                          <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" style="height: 40px;" [(ngModel)]="telefone.numero" formControlName="numero"
+                              pInputText required>
+                            <label for="float-input">Número</label>
+                          </span>
+                      </div>
+                
+                        <div class="ui-g-6">
+                          <span class="ui-float-label">
+                            <p-dropdown [options]="tipoTelefone" [(ngModel)]="selectedTipoTel" editable="true" formControlName="tipoTelefone" placeholder="______________"></p-dropdown>
+                            <label for="float-input">Tipo Telefone</label>
+                          </span>
+                        </div>
+                  </div>
+                  <div class="ui-g-12">
+                    <button class="btn btn-padrao" type="button" *ngIf="!habilitaUpdate" (click)="adicionaTelefone()">ADICIONAR</button>
+                    <button class="btn btn-padrao" type="button" *ngIf="habilitaUpdate" (click)="alteraTelefone()">ALTERAR</button>
+                  </div>
+            </div>
+          </div>
+        </form>
+        <br>
+        <br>
+        <table class="table" *ngIf="telefones.length > 0">
+          <thead>
+            <tr>
+                <th *ngFor="let col of cols" class="coluna">
+                    {{col.header}}
+                </th>
+                <th class="coluna">
+                  Ações
+                </th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let tel of telefones">
+                  <td class="coluna">{{ tel.numero }}</td>
+                  <td class="coluna">{{ tel.tipoTelefone }}</td>
+                  <td class="coluna">
+                    <div class="ui-g" style="padding: 0">
+                        <div class="ui-g-6" class="botoes">
+                            <button pButton type="button" (click)="preparaUpdate(tel)" icon="glyphicon glyphicon-pencil"> </button>
+                        </div>
+                        <div class="ui-g-6" class="botoes">
+                            <button pButton type="button" (click)="removeTelefone(tel)" icon="glyphicon glyphicon-trash"> </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
   </p-tabPanel>
   <p-tabPanel header="Email" leftIcon="pi pi-envelope" >
       After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
@@ -108,7 +165,7 @@
 </p-tabView>
 
 <div class="ui-g-12">
-  <button class="btn btn-padrao" type="button" [disabled]="!formulario.valid">ADICIONAR</button>
+  <button class="btn btn-padrao" type="button" [disabled]="!formulario.valid">SALVAR</button>
   <button class="btn btn-padrao" type="button" (click)="clean()">LIMPAR</button>
 </div>
 
